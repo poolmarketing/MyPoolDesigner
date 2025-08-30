@@ -1,0 +1,436 @@
+/**
+ * MyPoolDesigner Gallery CSS
+ * Version: 1.2.0
+ */
+
+/* Gallery wrapper */
+.mpd-gallery-wrapper {
+    margin: 20px 0;
+}
+
+/* Gallery grid */
+.mpd-gallery {
+    margin-bottom: 30px;
+}
+
+/* Bootstrap-style responsive grid system */
+.mpd-gallery .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.mpd-gallery .row > [class*="col-"] {
+    position: relative;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 15px;
+}
+
+/* Base column classes - mobile first */
+.mpd-gallery [class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+/* Medium screens and up (768px+) */
+@media (min-width: 768px) {
+    .mpd-gallery .col-md-4 { flex: 0 0 33.33333%; max-width: 33.33333%; }
+}
+
+/* Large screens and up (992px+) - 4 COLUMNS */
+@media (min-width: 992px) {
+    .mpd-gallery .col-lg-3 { flex: 0 0 25% !important; max-width: 25% !important; }
+}
+
+/* Small screens and up (576px+) */
+@media (min-width: 576px) {
+    .mpd-gallery .col-sm-6 { flex: 0 0 50%; max-width: 50%; }
+}
+
+/* Mobile overrides */
+@media (max-width: 575px) {
+    .mpd-gallery [class*="col-"] { flex: 0 0 100% !important; max-width: 100% !important; }
+}
+
+/* Gallery items */
+.mpd-item {
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mpd-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Images */
+.mpd-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: none;
+    display: block;
+}
+
+/* Item indicators */
+.mpd-video-indicator,
+.mpd-multi-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(59, 130, 246, 0.9);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    z-index: 10;
+    width: auto;
+    max-width: 80px;
+    white-space: nowrap;
+}
+
+/* Video indicator should be red background */
+.mpd-video-indicator {
+    background: rgba(220, 38, 38, 0.9);
+}
+
+.mpd-video-indicator .dashicons,
+.mpd-multi-indicator .dashicons {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+}
+
+/* Item titles */
+.mpd-item-title,
+.mpd-title {
+    padding: 12px 15px;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.4;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+/* Collection header */
+.mpd-collection-header {
+    margin-bottom: 30px;
+    text-align: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.mpd-collection-header h2 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.mpd-collection-header p {
+    margin: 0;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Error messages */
+.mpd-error {
+    background: #fee;
+    border: 1px solid #fcc;
+    color: #c33;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* Pagination */
+.mpd-pagination {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.mpd-pagination .pagination {
+    margin: 0;
+    display: inline-flex;
+    list-style: none;
+    padding: 0;
+    border-radius: 4px;
+}
+
+.mpd-pagination .page-item {
+    display: inline;
+}
+
+.mpd-pagination .page-link {
+    color: #3b82f6;
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 2px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.mpd-pagination .page-link:hover {
+    color: #2563eb;
+    background-color: #f3f4f6;
+    border-color: #d1d5db;
+}
+
+.mpd-pagination .page-item.active .page-link {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+    color: white;
+}
+
+.mpd-pagination .page-item.disabled .page-link {
+    color: #6b7280;
+    background-color: #f9fafb;
+    border-color: #e5e7eb;
+    cursor: not-allowed;
+}
+
+/* General utility classes */
+.mpd-gallery .container-fluid {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mpd-gallery .img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.mpd-gallery .d-flex {
+    display: flex !important;
+}
+
+.mpd-gallery .justify-content-center {
+    justify-content: center !important;
+}
+
+.mpd-gallery .align-items-center {
+    align-items: center !important;
+}
+
+/* Dark theme */
+.mpd-gallery.dark {
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.mpd-gallery.dark .mpd-item {
+    background: #2d2d2d;
+    color: #fff;
+}
+
+.mpd-gallery.dark .mpd-item-title,
+.mpd-gallery.dark .mpd-title {
+    color: #fff;
+}
+
+.mpd-gallery.dark .mpd-collection-header {
+    background: #333;
+    color: #fff;
+}
+
+.mpd-gallery.dark .mpd-collection-header h2 {
+    color: #fff;
+}
+
+.mpd-gallery.dark .mpd-collection-header p {
+    color: #fff;
+}
+
+/* Simple Lightbox Modal (replaces Bootstrap modal) */
+.mpd-lightbox {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mpd-lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    background: transparent;
+    text-align: center;
+}
+
+.mpd-lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: #fff;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.mpd-lightbox-close:hover {
+    color: #ccc;
+}
+
+body.mpd-lightbox-open {
+    overflow: hidden;
+}
+
+#mpdLightboxContent img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+#mpdLightboxContent video {
+    max-width: 100%;
+    max-height: 70vh;
+    border-radius: 8px;
+}
+
+#mpdLightboxContent iframe {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+#mpdNavigationControls {
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#mpdNavigationControls button {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+#mpdNavigationControls button:hover {
+    background: #2563eb;
+}
+
+#mpdNavigationControls button:disabled {
+    background: #6b7280;
+    cursor: not-allowed;
+}
+
+#mpdImageCounter {
+    color: white;
+    margin: 0 15px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .mpd-gallery .row > [class*="col-"] {
+        margin-bottom: 20px;
+    }
+    
+    .mpd-image {
+        height: 180px;
+    }
+    
+    .mpd-collection-header {
+        margin-bottom: 20px;
+        padding: 15px;
+    }
+    
+    .mpd-collection-header h2 {
+        font-size: 20px;
+    }
+    
+    .mpd-collection-header p {
+        font-size: 14px;
+    }
+    
+    #mpdNavigationControls {
+        padding: 15px 10px;
+    }
+    
+    #mpdNavigationControls button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .mpd-gallery.dark {
+        padding: 15px;
+    }
+    
+    .mpd-image {
+        height: 160px;
+    }
+    
+    .mpd-item-title {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+}
+
+/* Loading states */
+.mpd-loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+.mpd-loading::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #3b82f6;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: mpd-spin 1s linear infinite;
+    margin-left: 10px;
+}
+
+@keyframes mpd-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

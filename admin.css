@@ -1,0 +1,108 @@
+/**
+ * Admin styles for MyPoolDesigner Gallery Plugin
+ */
+
+.mpd-admin-wrapper {
+    max-width: 1400px;
+    margin: 20px auto;
+}
+
+.mpd-admin-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.mpd-icon-large {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+}
+
+.mpd-connection-status {
+    margin-top: 10px;
+}
+
+.mpd-status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.mpd-status-connected {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.mpd-status-disconnected {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+.mpd-shortcode-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.mpd-shortcode-card {
+    background: #f9f9f9;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.mpd-shortcode-card h3 {
+    margin-top: 0;
+    color: #3B74F9;
+    font-size: 18px;
+}
+
+.mpd-cta-section {
+    background: linear-gradient(135deg, #3B74F9 0%, #1e40af 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.mpd-cta-section h2 {
+    color: white;
+    margin: 0 0 15px 0;
+    font-size: 28px;
+}
+
+.mpd-cta-section p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.mpd-cta-button {
+    display: inline-block;
+    background: white;
+    color: #3B74F9;
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.mpd-cta-button:hover {
+    background: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    color: #3B74F9;
+    text-decoration: none;
+}
