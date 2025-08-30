@@ -17,7 +17,7 @@ A powerful WordPress plugin that integrates with MyPoolDesigner.ai to display be
 
 ### Method 1: WordPress Admin (Recommended)
 
-1. Download the plugin ZIP file from [MyPoolDesigner WordPress Integration](https://mypooldesigner.ai/wordpress-integration)
+1. Download the plugin ZIP file from [MyPoolDesigner WordPress Integration](https://mypooldesigner.ai/wordpress)
 2. In your WordPress admin, go to **Plugins → Add New**
 3. Click **Upload Plugin** and select the downloaded ZIP file
 4. Click **Install Now** and then **Activate**
@@ -177,9 +177,9 @@ The gallery is fully responsive:
 
 For technical support:
 
-1. Check the [MyPoolDesigner.ai Help Center](https://mypooldesigner.ai/help)
+1. Check the [MyPoolDesigner.ai Help Center](https://mypooldesigner.ai/support)
 2. Contact support through your MyPoolDesigner.ai account
-3. Submit issues on our [GitHub repository](https://github.com/mypooldesigner/wordpress-plugin)
+3. Submit issues on our [GitHub repository](https://github.com/mypooldesigner/wordpress)
 
 ## Changelog
 
