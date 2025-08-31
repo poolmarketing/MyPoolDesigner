@@ -50,16 +50,26 @@
     function hideLightbox() {
         $('#mpdLightbox').hide();
         $('body').removeClass('mpd-lightbox-open');
-        // Pause any playing videos
+        // Pause and remove video to prevent memory leaks and double loads
         $('#mpdLightboxContent video').each(function() {
             this.pause();
+            this.src = ''; // Clear the source
+            this.load(); // Reset the video element
         });
+        // Clear the content to fully remove video element
+        $('#mpdLightboxContent').empty();
     }
 
     function initMPDGallery() {
+        // Remove any existing handlers first to prevent duplicates
+        $(document).off('click', 'a[data-lightbox="mpd-gallery"]');
+        $(document).off('click', 'a.mpd-multi-item');
+        $(document).off('click', '.mpd-video-item');
+        
         // Single image lightbox (using data-lightbox attribute)
         $(document).on('click', 'a[data-lightbox="mpd-gallery"]', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             const imageUrl = $(this).attr('href');
             const title = $(this).find('img').attr('alt') || 'Design';
             showSingleImage(imageUrl, title);
@@ -68,6 +78,7 @@
         // Multi-image lightbox (using data-lightbox with gallery prefix)
         $(document).on('click', 'a.mpd-multi-item', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             const imagesString = $(this).data('images');
             const title = $(this).find('img').attr('alt') || 'Design Collection';
             const images = imagesString.split(',');
@@ -77,6 +88,7 @@
         // Video lightbox
         $(document).on('click', '.mpd-video-item', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             const videoUrl = $(this).data('video-url');
             const title = $(this).data('title');
             showVideo(videoUrl, title);
@@ -166,19 +178,36 @@
     }
 
     function showVideo(videoUrl, title) {
-        // Create video element with autoplay and controls
-        $('#mpdLightboxContent').html(`
-            <video controls autoplay style="max-width: 100%; max-height: 80vh;">
+        // Clear any existing content completely
+        $('#mpdLightboxContent').empty();
+        
+        // Simple video HTML insertion - no autoplay, no extra complexity
+        const videoHtml = `
+            <video id="mpdVideo" controls style="max-width: 100%; max-height: 80vh;">
                 <source src="${videoUrl}" type="video/mp4">
-                <source src="${videoUrl}" type="video/webm">
-                <source src="${videoUrl}" type="video/mov">
                 Your browser does not support the video tag.
             </video>
             <div class="mpd-video-title">${title}</div>
-        `);
+        `;
         
+        // Insert video HTML
+        $('#mpdLightboxContent').html(videoHtml);
+        
+        // Hide navigation controls for video
         $('#mpdNavigationControls').hide();
+        
+        // Show lightbox
         showLightbox();
+        
+        // Optional: Try to play after a delay (user can always click play if blocked)
+        setTimeout(function() {
+            const video = document.getElementById('mpdVideo');
+            if (video) {
+                video.play().catch(function() {
+                    // Silent fail - user can click play manually
+                });
+            }
+        }, 300);
     }
 
     // Utility function for loading states
