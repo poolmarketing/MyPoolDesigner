@@ -3,7 +3,7 @@
  * Plugin Name: MyPoolDesigner Gallery
  * Plugin URI: https://mypooldesigner.ai/
  * Description: Display your AI-generated pool designs with responsive Bootstrap galleries, lightbox viewing, multi-image navigation, and video support
- * Version: 2.1.0
+ * Version: 2.1.1
  * Author: MyPoolDesigner Team
  * License: GPL v2 or later
  * Text Domain: mypooldesigner-gallery
@@ -194,116 +194,6 @@ class MyPoolDesigner_Gallery {
             color: #764ba2;
         }
         
-        .mpd-pricing-section {
-            margin-top: 50px;
-        }
-        
-        .mpd-pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .mpd-pricing-card {
-            background: white;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 30px;
-            padding-bottom: 80px;
-            text-align: center;
-            position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            min-height: 480px;
-        }
-        
-        .mpd-pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        
-        .mpd-pricing-card.featured {
-            border-color: #667eea;
-            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
-        }
-        
-        .mpd-pricing-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #667eea;
-            color: white;
-            padding: 4px 20px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-        
-        .mpd-pricing-title {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: #1d2327;
-        }
-        
-        .mpd-pricing-price {
-            font-size: 36px;
-            font-weight: bold;
-            color: #667eea;
-            margin: 20px 0;
-        }
-        
-        .mpd-pricing-price span {
-            font-size: 16px;
-            color: #6b7280;
-            font-weight: normal;
-        }
-        
-        .mpd-pricing-features {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0 30px;
-        }
-        
-        .mpd-pricing-features li {
-            padding: 10px 0;
-            border-bottom: 1px solid #f3f4f6;
-            color: #4b5563;
-        }
-        
-        .mpd-pricing-features li:last-child {
-            border-bottom: none;
-        }
-        
-        .mpd-pricing-button {
-            display: inline-block;
-            position: absolute;
-            bottom: 20px;
-            left: 30px;
-            right: 30px;
-            padding: 12px 24px;
-            background: #667eea;
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s ease;
-        }
-        
-        .mpd-pricing-button:hover {
-            background: #5a67d8;
-            color: white;
-        }
-        
-        .mpd-pricing-button.secondary {
-            background: #e5e7eb;
-            color: #1d2327;
-        }
-        
-        .mpd-pricing-button.secondary:hover {
-            background: #d1d5db;
-            color: #1d2327;
-        }
         
         .mpd-connection-status {
             margin-top: 10px;
@@ -584,46 +474,6 @@ class MyPoolDesigner_Gallery {
                 return false;
             });
             
-            // Video modal handling
-            $(document).on("click", ".mpd-video-item", function(e) {
-                e.preventDefault();
-                var videoUrl = $(this).data("video-url");
-                var title = $(this).data("title");
-                
-                // Create modal if it doesn\'t exist
-                if ($("#mpd-video-modal").length === 0) {
-                    var modalHtml = \'<div id="mpd-video-modal" class="mpd-video-modal">\' +
-                        \'<div class="mpd-video-container">\' +
-                        \'<span class="mpd-video-close">&times;</span>\' +
-                        \'<video id="mpd-video-player" controls autoplay>\' +
-                        \'<source src="" type="video/mp4">\' +
-                        \'Your browser does not support the video tag.\' +
-                        \'</video>\' +
-                        \'<div class="mpd-video-title"></div>\' +
-                        \'</div>\' +
-                        \'</div>\';
-                    $("body").append(modalHtml);
-                }
-                
-                // Set video source and title
-                $("#mpd-video-player source").attr("src", videoUrl);
-                $("#mpd-video-player")[0].load();
-                $(".mpd-video-title").text(title);
-                
-                // Show modal
-                $("#mpd-video-modal").fadeIn();
-                
-                return false;
-            });
-            
-            // Close video modal
-            $(document).on("click", ".mpd-video-close, #mpd-video-modal", function(e) {
-                if (e.target === this) {
-                    $("#mpd-video-modal").fadeOut();
-                    $("#mpd-video-player")[0].pause();
-                }
-            });
-            
             // Pagination handling
             $(document).on("click", ".mpd-prev-page", function() {
                 var $gallery = $(this).closest(".mpd-gallery-wrapper");
@@ -809,62 +659,6 @@ class MyPoolDesigner_Gallery {
                 <a href="https://mypooldesigner.ai/ai-pool-design" target="_blank" rel="noopener noreferrer" class="mpd-cta-button"><?php echo esc_html__('Start Your Free Trial', 'mypooldesigner-gallery'); ?></a>
             </div>
             
-            <div class="mpd-pricing-section">
-                <h2 style="text-align: center; font-size: 28px; margin-bottom: 10px;">Choose Your Plan</h2>
-                <p style="text-align: center; color: #6b7280;">Start free, upgrade when you need more power</p>
-                
-                <div class="mpd-pricing-grid">
-                    <div class="mpd-pricing-card">
-                        <div class="mpd-pricing-title">Free</div>
-                        <div class="mpd-pricing-price">$0<span>/month</span></div>
-                        <ul class="mpd-pricing-features">
-                            <li>10 designs during 7-day trial</li>
-                            <li>Access to all features during trial</li>
-                            <li>Standard resolution downloads</li>
-                            <li>Video design generation</li>
-                            <li>Presentation creator</li>
-                            <li>Add designs to collections</li>
-                            <li>Share your designs</li>
-                        </ul>
-                        <a href="https://mypooldesigner.ai/ai-pool-design" target="_blank" class="mpd-pricing-button secondary">Start Free Trial</a>
-                    </div>
-                    
-                    <div class="mpd-pricing-card featured">
-                        <div class="mpd-pricing-badge">Most Popular</div>
-                        <div class="mpd-pricing-title">Pro</div>
-                        <div class="mpd-pricing-price">$29.99<span>/month</span></div>
-                        <ul class="mpd-pricing-features">
-                            <li><strong>100 images per month</strong></li>
-                            <li><strong>3 videos per month</strong></li>
-                            <li>High-resolution downloads</li>
-                            <li>Upload backyard generator</li>
-                            <li>Presentation Maker</li>
-                            <li>Custom prompt design generator</li>
-                            <li>Image to video generator</li>
-                            <li>Email support</li>
-                            <li>Commercial usage rights</li>
-                        </ul>
-                        <a href="https://mypooldesigner.ai/subscribe" target="_blank" class="mpd-pricing-button">Upgrade to Pro</a>
-                    </div>
-                    
-                    <div class="mpd-pricing-card">
-                        <div class="mpd-pricing-title">Premium</div>
-                        <div class="mpd-pricing-price">$89.99<span>/month</span></div>
-                        <ul class="mpd-pricing-features">
-                            <li><strong>500 images per month</strong></li>
-                            <li><strong>10 videos per month</strong></li>
-                            <li>Presentation maker</li>
-                            <li>Multiple viewpoints & aspects</li>
-                            <li>Choose AI modeling styles</li>
-                            <li>Custom prompt generator</li>
-                            <li>Upload backyard generator</li>
-                            <li>Priority email support</li>
-                            <li>Commercial usage rights</li>
-                        </ul>
-                        <a href="https://mypooldesigner.ai/subscribe" target="_blank" class="mpd-pricing-button">Upgrade to Premium</a>
-                    </div>
-                </div>
-            </div>
             <?php endif; ?>
             
             <div class="card" style="padding: 20px; margin: 40px 0 20px; background: #f0f8ff;">
